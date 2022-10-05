@@ -2,7 +2,7 @@ import random
 
 from WordleDictionary import FIVE_LETTER_WORDS
 
-from WordleGraphics import CORRECT_COLOR, PRESENT_COLOR, MISSING_COLOR, UNKNOWN_COLOR, WordleGWindow, N_COLS, N_ROWS
+from WordleGraphics import CORRECT_COLOR, PRESENT_COLOR, MISSING_COLOR, UNKNOWN_COLOR, WordleGWindow, N_COLS, N_ROWS, KEY_LABELS
 
 
 def wordle():
@@ -11,7 +11,7 @@ def wordle():
     gw = WordleGWindow()
     
     # get random word
-    randomWord = "sassy" #random.choice(FIVE_LETTER_WORDS)
+    randomWord = random.choice(FIVE_LETTER_WORDS)
     #print(randomWord)
 
     # split random word into 5 distinct letters
@@ -48,7 +48,7 @@ def wordle():
             if correctWord == guessedWord:
                 for spot in range(0, 5):
                     gw.set_square_color(row, spot, CORRECT_COLOR)
-                    #gw.set_key_color(wordLetters[spot], CORRECT_COLOR)
+                    gw.set_key_color(wordLetters[spot].upper(), CORRECT_COLOR)
 
                 if row == 0:
                     gw.show_message("You guessed the word in " + str(row + 1) + " guess!")
@@ -64,6 +64,7 @@ def wordle():
                     if wordLetters[spot] == letterList[spot]:
 
                         gw.set_square_color(row, spot, CORRECT_COLOR)
+                        gw.set_key_color(wordLetters[spot].upper(), CORRECT_COLOR)
                         gw.show_message("Incorrect. Keep Guessing")
              
                     # If correct letter NOT correct spot == turn yellow (PRESENT_COLOR); Can reuse letter
@@ -79,19 +80,23 @@ def wordle():
                             #If correct word has double letters
                             if numLetterCorrectWord > 1:
                                 gw.set_square_color(row, spot, PRESENT_COLOR)
+                                gw.set_key_color(wordLetters[spot].upper(), PRESENT_COLOR)
 
                             #If correct word has no double letters
                             if numLetterCorrectWord == 1:
                                 gw.set_square_color(row, spot, MISSING_COLOR)
+                                gw.set_key_color(wordLetters[spot].upper(), MISSING_COLOR)
 
                         # If single letter
                         if numLetterGuessedWord == 1:
                             gw.set_square_color(row, spot, PRESENT_COLOR)
+                            gw.set_key_color(wordLetters[spot].upper(), PRESENT_COLOR)
                             gw.show_message("Incorrect. Keep Guessing")
 
                     # If NOT correct letter && NOT correct spot == turn red (MISSING_COLOR); Can't letter
                     else:
                         gw.set_square_color(row, spot, MISSING_COLOR)
+                        gw.set_key_color(wordLetters[spot].upper(), MISSING_COLOR)
                         gw.show_message("Incorrect. Keep Guessing")        
 
                 # Increment row for next guess
