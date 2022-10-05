@@ -22,7 +22,7 @@ UNKNOWN_COLOR = "#FFFFFF"       # Undetermined letters are white
 KEY_COLOR = "#DDDDDD"           # Keys are colored light gray
 
 CANVAS_WIDTH = 500		# Width of the tkinter canvas (pixels)
-CANVAS_HEIGHT = 700		# Height of the tkinter canvas (pixels)
+CANVAS_HEIGHT = 650		# Height of the tkinter canvas (pixels)
 
 SQUARE_SIZE = 60		# Size of each square (pixels)
 SQUARE_SEP = 5                  # Separation between squares (pixels)
@@ -36,7 +36,7 @@ KEY_FONT = ("Helvetica Neue", -18)
 ENTER_FONT = ("Helvetica Neue", -14)
 
 KEY_WIDTH = 40
-KEY_HEIGHT = 60
+KEY_HEIGHT = 50
 KEY_CORNER = 9
 KEY_XSEP = 5
 KEY_YSEP = 7
